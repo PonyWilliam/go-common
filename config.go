@@ -5,6 +5,7 @@ import (
 	"github.com/micro/go-plugins/config/source/consul/v2"
 	"strconv"
 )
+var QPS = 1000
 //设置配置中心
 func GetConsualConfig(host string,port int64,prefix string)(config.Config,error){
 	consualSource := consul.NewSource(
@@ -16,11 +17,11 @@ func GetConsualConfig(host string,port int64,prefix string)(config.Config,error)
 		consul.StripPrefix(true),
 		)
 	//配置初始化`
-	config,err := config.NewConfig()
+	newConfig,err := config.NewConfig()
 	if err != nil{
-		return config,err
+		return newConfig,err
 	}
 	//加载配置
-	err = config.Load(consualSource)
-	return config,err
+	err = newConfig.Load(consualSource)
+	return newConfig,err
 }
