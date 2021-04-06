@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 var QPS = 1000
-var ip = []string{"192.168.1.101"}
+var IP = []string{"192.168.1.101"}
 //设置配置中心
 func GetConsualConfig(host string,port int64,prefix string)(config.Config,error){
 	consualSource := consul.NewSource(
