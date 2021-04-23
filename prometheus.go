@@ -9,7 +9,7 @@ import (
 
 func PrometheusBoot(port string)  {
 	http.Handle("/metrics",promhttp.Handler())
-	err := http.ListenAndServe(fmt.Sprintf("%s:%s",IP,port),nil)
+	err := http.ListenAndServe(fmt.Sprintf(":%s",port),nil)
 	if err != nil{
 		log.Fatal(err)
 	}
